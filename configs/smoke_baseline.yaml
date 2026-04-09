@@ -1,0 +1,32 @@
+experiment:
+  name: baseline_smoke
+
+data:
+  train_path: data/interim/smoke/train_dataset_a.csv
+  text_column: text
+  label_column: label
+  label_map:
+    positive: positive
+    neutral: neutral
+    negative: negative
+    bullish: positive
+    bearish: negative
+  eval_sets:
+    - name: in_domain_dataset_a
+      path: data/interim/smoke/test_dataset_a.csv
+    - name: cross_dataset_b
+      path: data/interim/smoke/test_dataset_b.csv
+
+model:
+  max_features: 200
+  min_df: 1
+  ngram_range: [1, 2]
+  C: 1.0
+  max_iter: 300
+  class_weight: null
+
+output:
+  metrics_dir: outputs/metrics
+  predictions_dir: outputs/predictions
+  logs_dir: outputs/logs
+  checkpoints_dir: outputs/checkpoints

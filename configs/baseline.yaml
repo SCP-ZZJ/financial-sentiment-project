@@ -1,0 +1,32 @@
+experiment:
+  name: baseline_financial_sentiment
+
+data:
+  train_path: data/processed/dataset_a/train.csv
+  text_column: text
+  label_column: label
+  label_map:
+    positive: positive
+    neutral: neutral
+    negative: negative
+    bullish: positive
+    bearish: negative
+  eval_sets:
+    - name: dataset_a_test
+      path: data/processed/dataset_a/test.csv
+    - name: dataset_b_test
+      path: data/processed/dataset_b/test.csv
+
+model:
+  max_features: 20000
+  min_df: 2
+  ngram_range: [1, 2]
+  C: 2.0
+  max_iter: 500
+  class_weight: balanced
+
+output:
+  metrics_dir: outputs/metrics
+  predictions_dir: outputs/predictions
+  logs_dir: outputs/logs
+  checkpoints_dir: outputs/checkpoints
