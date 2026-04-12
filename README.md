@@ -93,7 +93,77 @@ Or run the real baseline:
 !bash scripts/colab_run_baseline.sh configs/baseline.yaml
 ```
 
-## Next Steps
-- Replace placeholder dataset paths in `configs/baseline.yaml`
-- Add transformer training under `src/models`
-- Add cross-dataset experiment configs for the two real datasets
+## Statistical Baselines
+
+Run all statistical baselines (LogReg, Linear SVM, Naive Bayes) on both datasets:
+
+```bash
+python scripts/run_statistical_baselines.py
+```
+
+Results are saved to `outputs/metrics/statistical_baselines/summary.csv`.
+
+## Transformer Baselines
+
+Fine-tune BERT-base or FinBERT on a single config:
+
+```bash
+python -m src.cli.train_transformer --config configs/transformer_finbert_fpb.yaml
+```
+
+Run all four transformer baselines (BERT×2 + FinBERT×2):
+
+```bash
+python scripts/run_transformer_baselines.py
+```
+
+Results are saved to `outputs/metrics/transformer_baselines/summary.csv`.
+
+## Continued MLM Pretraining + Fine-tuning
+
+Step 1: Run continued MLM pretraining on in-domain financial text:
+
+```bash
+python -m src.cli.run_mlm_pretrain --config configs/mlm_pretrain.yaml
+```
+
+Step 2: Update the `model.name` field in `configs/transformer_finbert_mlm_fpb.yaml` (or `_tfns.yaml`) to point to the saved MLM checkpoint directory.
+
+Step 3: Fine-tune:
+
+```bash
+python -m src.cli.train_transformer --config configs/transformer_finbert_mlm_fpb.yaml
+```
+
+## Colab Usage
+
+Recommended Colab pattern:
+
+```bash
+!git clone <your-repo-url>
+%cd financial-sentiment-project
+!bash scripts/colab_setup.sh
+
+# Statistical baselines (CPU is fine)
+!python scripts/run_statistical_baselines.py
+
+# Transformer fine-tuning (GPU recommended)
+!python -m src.cli.train_transformer --config configs/transformer_finbert_fpb.yaml
+
+# Or run all four transformer baselines
+!python scripts/run_transformer_baselines.py
+
+# Continued MLM pretraining
+!python -m src.cli.run_mlm_pretrain --config configs/mlm_pretrain.yaml
+
+# Then fine-tune from the MLM checkpoint
+!python -m src.cli.train_transformer --config configs/transformer_finbert_mlm_fpb.yaml
+```
+
+To persist outputs to Google Drive:
+
+```python
+from google.colab import drive
+drive.mount('/content/drive')
+!cp -r outputs /content/drive/MyDrive/financial-sentiment-outputs
+```

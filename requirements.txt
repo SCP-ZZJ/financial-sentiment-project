@@ -7,5 +7,6 @@ datasets
 transformers
 evaluate
 torch
+accelerate
 pyyaml
 tqdm
