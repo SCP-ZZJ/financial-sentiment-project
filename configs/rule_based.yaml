@@ -1,0 +1,29 @@
+experiment:
+  name: rule_based_lm_lexicon
+
+data:
+  text_column: text
+  label_column: label
+  eval_sets:
+    - name: fpb_val
+      path: data/processed/fpb/val.csv
+    - name: fpb_test
+      path: data/processed/fpb/test.csv
+    - name: tfns_val
+      path: data/processed/tfns/val.csv
+    - name: tfns_test
+      path: data/processed/tfns/test.csv
+
+model:
+  lexicon_path: data/lexicon/Loughran-McDonald_MasterDictionary_1993-2025.csv
+  word_column: Word
+  positive_column: Positive
+  negative_column: Negative
+  lexicon_threshold: 0
+  min_count_diff: 1
+
+output:
+  metrics_dir: outputs/metrics/rule_based_baseline
+  predictions_dir: outputs/predictions/rule_based_baseline
+  figures_dir: outputs/figures/rule_based_baseline
+  logs_dir: outputs/logs/rule_based_baseline
