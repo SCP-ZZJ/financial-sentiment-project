@@ -14,6 +14,7 @@ env/
 data/raw/*
 data/interim/*
 data/processed/*
+data/lexicon/*
 
 # Outputs
 outputs/metrics/*
