@@ -10,11 +10,6 @@ env/
 # Jupyter
 .ipynb_checkpoints/
 
-# Data
-data/raw/*
-data/interim/*
-data/processed/*
-data/lexicon/*
 
 # Outputs
 outputs/metrics/*
