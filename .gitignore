@@ -17,7 +17,7 @@ outputs/predictions/*
 outputs/figures/*
 outputs/logs/*
 outputs/checkpoints/*
-outputs/eda/*
+
 outputs/preprocessing/*
 
 # Keep folders

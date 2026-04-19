@@ -1,0 +1,98 @@
+{
+  "dataset": "tfns",
+  "num_rows": 11931,
+  "num_columns": 14,
+  "columns": [
+    "text",
+    "label",
+    "dataset",
+    "split",
+    "source_file",
+    "row_number",
+    "text_stripped",
+    "char_length",
+    "word_count",
+    "has_url",
+    "has_ticker",
+    "has_number",
+    "has_percent",
+    "has_replacement_char"
+  ],
+  "label_distribution": {
+    "2": {
+      "count": 7744,
+      "ratio": 0.6491
+    },
+    "1": {
+      "count": 2398,
+      "ratio": 0.201
+    },
+    "0": {
+      "count": 1789,
+      "ratio": 0.1499
+    }
+  },
+  "missing_values": {
+    "text": 0,
+    "label": 0,
+    "dataset": 0,
+    "split": 0,
+    "source_file": 0,
+    "row_number": 0,
+    "text_stripped": 0,
+    "char_length": 0,
+    "word_count": 0,
+    "has_url": 0,
+    "has_ticker": 0,
+    "has_number": 0,
+    "has_percent": 0,
+    "has_replacement_char": 0
+  },
+  "empty_text_rows": 0,
+  "duplicate_rows": 0,
+  "duplicate_texts": 3,
+  "parse_failures": 0,
+  "length_stats": {
+    "char_length": {
+      "mean": 86.0215,
+      "median": 79.0,
+      "min": 2,
+      "max": 227
+    },
+    "word_count": {
+      "mean": 12.207,
+      "median": 12.0,
+      "min": 1,
+      "max": 33
+    }
+  },
+  "pattern_stats": {
+    "rows_with_url": 5612,
+    "rows_with_ticker": 1804,
+    "rows_with_number": 4132,
+    "rows_with_percent": 1060,
+    "rows_with_replacement_char": 6
+  },
+  "length_by_label": {
+    "('char_length', 'mean')": {
+      "0": 83.1185,
+      "1": 81.1393,
+      "2": 88.2039
+    },
+    "('char_length', 'median')": {
+      "0": 76.0,
+      "1": 74.0,
+      "2": 83.0
+    },
+    "('word_count', 'mean')": {
+      "0": 11.9486,
+      "1": 12.0175,
+      "2": 12.3254
+    },
+    "('word_count', 'median')": {
+      "0": 11.0,
+      "1": 11.0,
+      "2": 12.0
+    }
+  }
+}
