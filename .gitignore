@@ -19,6 +19,8 @@ outputs/logs/*
 outputs/checkpoints/*
 
 outputs/preprocessing/*
+outputs/bert-dapt-outputs/*
+outputs/colab-outputs/*
 
 # Keep folders
 !data/raw/.gitkeep
