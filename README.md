@@ -10,7 +10,7 @@ Implemented pipelines include:
 - statistical baselines: TF-IDF + Logistic Regression, Linear SVM, Naive Bayes
 - lexicon baseline: Loughran-McDonald rule-based classifier
 - transformer fine-tuning: BERT and FinBERT
-- optional continued MLM pretraining before fine-tuning
+- optional continued MLM pretraining before fine-tuning for FinBERT and BERT
 
 The project supports both in-domain and cross-dataset evaluation.
 
@@ -91,10 +91,19 @@ Run continued MLM pretraining:
 
 ```bash
 python -m src.cli.run_mlm_pretrain --config configs/mlm_pretrain.yaml
+python -m src.cli.run_mlm_pretrain --config configs/mlm_pretrain_bert.yaml
 ```
 
-Then fine-tune from the saved MLM checkpoint by updating `model.name` in
-`configs/transformer_finbert_mlm_fpb.yaml` or `configs/transformer_finbert_mlm_tfns.yaml`.
+Then fine-tune from the saved MLM checkpoint by updating `model.name` in one of:
+- `configs/transformer_finbert_mlm_fpb.yaml`
+- `configs/transformer_finbert_mlm_tfns.yaml`
+- `configs/transformer_bert_mlm_fpb.yaml`
+- `configs/transformer_bert_mlm_tfns.yaml`
+
+Optional BERT augmentation configs are also included:
+- `configs/mlm_pretrain_bert_augmentation.yaml`
+- `configs/transformer_bert_mlm_fpb_augmentation.yaml`
+- `configs/transformer_bert_mlm_tfns_augmentation.yaml`
 
 ## Outputs
 Key generated outputs include:
